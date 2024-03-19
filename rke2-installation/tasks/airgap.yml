@@ -1,0 +1,19 @@
+
+- name: Copy RKE2 binary to target
+  copy:
+    src: "/path/to/local/rke2"
+    dest: "/usr/local/bin/rke2"
+    mode: '0755'
+
+- name: Copy RKE2 images to target
+  copy:
+    src: "/path/to/local/rke2-images.tar.gz"
+    dest: "/var/lib/rancher/rke2/agent/images/"
+  
+- name: Install RKE2
+  shell: |
+    tar xzf /var/lib/rancher/rke2/agent/images/rke2-images.tar.gz -C /var/lib/rancher/rke2/agent/images/
+    systemctl enable rke2-server.service
+    systemctl start rke2-server.service
+  args:
+    executable: /bin/bash

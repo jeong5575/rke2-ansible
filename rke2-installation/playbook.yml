@@ -1,0 +1,5 @@
+- hosts: all
+  roles:
+    - role: rke2-installation
+      vars:
+        is_airgap: true  # Airgap 환경으로 설정. Public 환경으로 설치하려면 false로 설정

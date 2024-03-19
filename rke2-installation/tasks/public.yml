@@ -1,0 +1,9 @@
+
+- name: Download and run the RKE2 installation script
+  get_url:
+    url: https://get.rke2.io
+    dest: /tmp/install_rke2.sh
+  mode: '0755'
+
+- name: Install RKE2 using the script
+  command: bash /tmp/install_rke2.sh
